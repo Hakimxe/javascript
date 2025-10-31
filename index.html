@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RentCar - Premium Car Rental Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>RentCar</h1>
+                </div>
+                <nav class="nav">
+                    <a href="#cars">Cars</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#about">About</a>
+                    <a href="#booking" class="btn-primary">Book Now</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Drive Your Dream Car Today</h2>
+                <p class="hero-subtitle">Premium car rental service with the best vehicles at unbeatable prices. Book in minutes, drive in hours.</p>
+                <a href="#cars" class="btn-hero">Explore Our Fleet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Search -->
+    <section class="quick-search">
+        <div class="container">
+            <div class="search-card">
+                <div class="search-grid">
+                    <div class="search-field">
+                        <label>Pick-up Location</label>
+                        <input type="text" id="pickup-location" placeholder="Enter city or airport">
+                    </div>
+                    <div class="search-field">
+                        <label>Pick-up Date</label>
+                        <input type="date" id="pickup-date">
+                    </div>
+                    <div class="search-field">
+                        <label>Return Date</label>
+                        <input type="date" id="return-date">
+                    </div>
+                    <div class="search-field">
+                        <button class="btn-search" onclick="scrollToCars()">Search Cars</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3>Best Price Guarantee</h3>
+                    <p>We match any competitor's price and beat it by 5%</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Booking</h3>
+                    <p>Book your car in under 2 minutes with instant confirmation</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">★</div>
+                    <h3>Premium Fleet</h3>
+                    <p>Choose from luxury sedans, SUVs, and sports cars</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">24/7</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer service for your peace of mind</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Car Listings -->
+    <section id="cars" class="cars-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Fleet</h2>
+                <p>Choose from our selection of premium vehicles</p>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">All Cars</button>
+                <button class="filter-tab" data-category="economy">Economy</button>
+                <button class="filter-tab" data-category="luxury">Luxury</button>
+                <button class="filter-tab" data-category="suv">SUV</button>
+                <button class="filter-tab" data-category="sports">Sports</button>
+            </div>
+
+            <div class="cars-grid" id="cars-grid">
+                <!-- Cars will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Rent a car in three simple steps</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Car</h3>
+                    <p>Browse our fleet and select the perfect vehicle for your needs</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Book Online</h3>
+                    <p>Fill out the booking form with your details and preferences</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Hit The Road</h3>
+                    <p>Pick up your car and enjoy your journey with confidence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Complete Your Booking</h2>
+            <div class="booking-summary" id="booking-summary">
+                <!-- Selected car details will appear here -->
+            </div>
+            <form id="booking-form" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="full-name">Full Name *</label>
+                        <input type="text" id="full-name" name="full-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="license">Driver's License *</label>
+                        <input type="text" id="license" name="license" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="booking-pickup-date">Pick-up Date *</label>
+                        <input type="date" id="booking-pickup-date" name="booking-pickup-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-return-date">Return Date *</label>
+                        <input type="date" id="booking-return-date" name="booking-return-date" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pickup-location-booking">Pick-up Location *</label>
+                    <input type="text" id="pickup-location-booking" name="pickup-location-booking" required>
+                </div>
+                <div class="form-group">
+                    <label for="additional-notes">Additional Notes</label>
+                    <textarea id="additional-notes" name="additional-notes" rows="3"></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="insurance" name="insurance">
+                        Add Premium Insurance (+$15/day)
+                    </label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="gps" name="gps">
+                        Add GPS Navigation (+$8/day)
+                    </label>
+                </div>
+                <div class="total-price" id="total-price">
+                    Total: $0
+                </div>
+                <button type="submit" class="btn-submit">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-content">
+            <div class="success-icon">✓</div>
+            <h2>Booking Confirmed!</h2>
+            <p>Your car rental has been successfully booked. We've sent a confirmation email with all the details.</p>
+            <button class="btn-primary" onclick="closeSuccessModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RentCar</h3>
+                    <p>Premium car rental service for your every need.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#cars">Our Fleet</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#about">About Us</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@rentcar.com</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <p>Facebook | Twitter | Instagram</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RentCar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
